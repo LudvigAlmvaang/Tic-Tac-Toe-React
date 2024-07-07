@@ -13,10 +13,19 @@ $enable-classes: true,
 $theme-color: "azure"
 );
 
+$square-height-default: 50vh / 3;
+$square-height-lg: 80vh / 3;
+
 .grid {
-  display: flex; //Flexbox instead of Gridbox, otherwise PicoCSS will collapse all the columns on small viewports
+  display: flex;
   justify-content: space-between;
-  min-height: 25vh;
+  min-height: $square-height-default;
+}
+
+@media (min-width: 1024px) {
+  .grid {
+    min-height: $square-height-lg;
+  }
 }
 
 .grid > * {
@@ -25,7 +34,12 @@ $theme-color: "azure"
 
 .game {
    display: grid;
-   grid-template-columns: 2fr 1fr;
+}
+
+@media (min-width: 1024px) {
+  .game {
+     grid-template-columns: 2fr 1fr;
+  }
 }
 
 .board-row {
@@ -33,5 +47,13 @@ $theme-color: "azure"
 }
 
 .game-info {
-  justify-self: end;
+  justify-self: start;
+  margin-top: 20px;
+}
+
+@media (min-width: 1024px) {
+  .game-info {
+    justify-self: end;
+    margin-top: auto;
+  }
 }
